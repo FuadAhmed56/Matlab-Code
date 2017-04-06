@@ -12,7 +12,10 @@ trainPct= .8;
 ValPct= .1;
 testPct= 1-ValPct-trainPct;
 
-mdl = fitlm( outputs, targets);
+Outputs = net(inputs);
+mdl = fitlm( Outputs, targets);
+mdl.Residuals.Raw
+plotResiduals(mdl)
 disp ('rSquared: ');
 disp( mdl.Rsquared.Ordinary);
 
